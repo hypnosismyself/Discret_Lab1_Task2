@@ -97,7 +97,6 @@ int inputFigureType()
 
     std::cout << "Выберите тип фигуры" << std::endl
               << "1 - Прямоугольник, 2 - Круг" << std::endl;
-
     std::cin >> figureType;
 
     while (figureType != 1 && figureType != 2)
@@ -118,11 +117,11 @@ void menu()
     // меню через бесконечный цикл
     do 
     {
-        std::cout << "\nМеню:\n";
-        std::cout << "1. Ввести фигуры\n";
-        std::cout << "2. Проверить принадлежность точки\n";
-        std::cout << "0. Выход\n";
-        std::cout << "Выберите действие: ";
+        std::cout << "Меню:\n" 
+                  << "1. Ввести фигуры\n"
+                  << "2. Проверить принадлежность точки\n"
+                  << "0. Выход\n"
+                  << "Выберите действие: ";
         std::cin >> command;
 
         switch (command)
@@ -132,37 +131,15 @@ void menu()
             {
                 int figureType;
 
-                // ввод A
-                figureType = inputFigureType();
+                for (int i = 0; i < 4; i++)
+                {
+                    figureType = inputFigureType();
 
-                if (figureType == 1) 
-                    figures[0] = Rectangle::createRectangle();
-                else if (figureType == 2)                   
-                    figures[0] = Circle::createCircle();
-
-                // ввод B
-                figureType = inputFigureType();
-
-                if (figureType == 1)
-                    figures[1] = Rectangle::createRectangle();
-                else if (figureType == 2)
-                    figures[1] = Circle::createCircle();
-
-                // ввод C
-                figureType = inputFigureType();
-
-                if (figureType == 1)
-                    figures[2] = Rectangle::createRectangle();
-                else if (figureType == 2)
-                    figures[2] = Circle::createCircle();
-
-                // ввод D
-                figureType = inputFigureType();
-
-                if (figureType == 1)
-                    figures[3] = Rectangle::createRectangle();
-                else if (figureType == 2)
-                    figures[3] = Circle::createCircle();
+                    if (figureType == 1)
+                        figures[i] = Rectangle::createRectangle();
+                    else if (figureType == 2)
+                        figures[i] = Circle::createCircle();
+                }
             }
             // проверка принадлежности точки множеству
             case 2: 
@@ -187,7 +164,6 @@ void menu()
             case 0:
             {
                 std::cout << "Выход\n";
-
                 break;
             }
             default:
